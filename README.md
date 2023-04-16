@@ -98,7 +98,20 @@ binlog_do_db      = db_3
 ![exp_2](https://github.com/RSafin12/12.6-DB-Replication/blob/main/exp_2.png)  
 
 
+### Репликация MySQL в Docker
+А вот пока тут не получилось  
+Image mysql:8.0 из презентации не очень хорошо работает, поймал ошибку  
+![error](https://github.com/RSafin12/12.6-DB-Replication/blob/main/error.png)  
+быстро отгуглить не удалось, пришлось воспользоваться другим образом, я попробовал несколько вариантов, работает ubuntu/mysql:8.0-22.04_beta   
+Все шаги из презентации выполнены, однако фактически реплика не будет работать  
+Т.е. вот такой вывод   
+SHOW SLAVE STATUS\G  
+![slave_status](https://github.com/RSafin12/12.6-DB-Replication/blob/main/slave_status.png)  
+с ошибкой  
+`error connecting to master 'replication@replication-master:3306' - retry-time: 60 retries: 1 message: Unknown MySQL server host 'replication-master' (-2)`  
 
+Проблема в том, что работает только один контейнер. То есть, если запущен master, то не работает slave и наоборот   
+![trouble](https://github.com/RSafin12/12.6-DB-Replication/blob/main/trouble.png)  
 
 
 
